@@ -5,9 +5,12 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     //Declare Universal Variables 
-    //public Rigidbody2D rb; //get Rigidbody 2D component from sprite
-    private Rigidbody2D rb; //get Rigidbody 2D privately
-    public float ballSpeed = 5; //declare ballSpeed variable
+    public Rigidbody2D rb; //get Rigidbody 2D component from sprite
+    //private Rigidbody2D rb; //get Rigidbody 2D privately
+
+    public float force = 200; //delcare and set force/velocity
+    //public float ballSpeed = 5; //declare ballSpeed variable
+
     //private float xPos; //get x position
     //private float yPos; //get y position
     private float xDir; //declare x direction
@@ -22,7 +25,7 @@ public class BallController : MonoBehaviour
         Debug.Log("Hello World");
 
 
-        rb = GetComponent<Rigidbody2D>(); 
+        //rb = GetComponent<Rigidbody2D>(); 
             //get the component of the gameobject the script is placed on
             //comment after showing the global variable
 
@@ -31,15 +34,21 @@ public class BallController : MonoBehaviour
             //if x = -1, it'll move right. If x = 1, it'll move left
         yDir = Random.Range(0, 2) == 0 ? -1 : 1; //set y direction
                                                  //if y = -1, it'll move down. If y = 1, it'll move up
-
-        Vector2 direction = new Vector2(xDir, yDir); //create new Vector2 variable
-        //rb.velocity = new Vector2(ballSpeed * xDir, ballSpeed * yDir); //create a force on the ball
-        rb.velocity = direction * ballSpeed; //essentially the same as above, just loading the direction variables into one value
+            //note difference between integers (whole numbers) and floats (decimals)
 
         //Make Ball Move at Start (fancier angles) 
         //float x = Random.value < 0.5f ? -1.0f : 1.0f; //x coor value, choose left or right
         //if x is less than half, it'll be one direction, if greater then it is the other
         //float y = Random.value < 0.5f ? Random.Range(-1.0f, -0.5f):Random.Range(0.5f, 1.0f); //y coor value, choose random angle
+
+        Vector3 direction = new Vector3(xDir, yDir, 0); //create new Vector3 variable
+            //What is a vector?
+            //Vector2(x,y) and Vector3(x,y,z)
+
+        //rb.velocity = new Vector3(ballSpeed * xDir, ballSpeed * yDir); //create a force on the ball
+        //rb.velocity = direction * ballSpeed; //essentially the same as above, just loading the direction variables into one value
+        //rb.velocity = direction * force; //essentially the same as above, just loading the direction variables into one value
+        rb.AddForce(direction * force); //apply force in decided direction
 
     }
 

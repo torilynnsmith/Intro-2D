@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 626793811}
   - component: {fileID: 626793810}
   - component: {fileID: 626793809}
+  - component: {fileID: 626793813}
   m_Layer: 0
   m_Name: Paddle 2
   m_TagString: Untagged
@@ -450,6 +451,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626793813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626793808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a1f7787a5644ebba6424d4910fc17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rbPaddle: {fileID: 626793810}
+  isPlayer1: 0
+  paddleSpeed: 0.1
 --- !u!1 &848548846
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe32135bb19843b4a48861dd8e60a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 5
+  rb: {fileID: 1476125719}
+  force: 200
 --- !u!50 &1476125719
 Rigidbody2D:
   serializedVersion: 4
@@ -823,6 +840,7 @@ GameObject:
   - component: {fileID: 1551855529}
   - component: {fileID: 1551855528}
   - component: {fileID: 1551855527}
+  - component: {fileID: 1551855531}
   m_Layer: 0
   m_Name: Paddle 1
   m_TagString: Untagged
@@ -969,6 +987,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551855531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551855526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a1f7787a5644ebba6424d4910fc17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rbPaddle: {fileID: 1551855528}
+  isPlayer1: 1
+  paddleSpeed: 0.1
 --- !u!1 &2061421906
 GameObject:
   m_ObjectHideFlags: 0
