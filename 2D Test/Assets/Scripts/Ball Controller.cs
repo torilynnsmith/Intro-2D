@@ -26,14 +26,20 @@ public class BallController : MonoBehaviour
 
 
         //rb = GetComponent<Rigidbody2D>(); 
-            //get the component of the gameobject the script is placed on
-            //comment after showing the global variable
+        //get the component of the gameobject the script is placed on
+        //comment after showing the global variable
 
         //Make Ball Move in Random Direction at start
         xDir = Random.Range(0, 2) == 0 ? -1 : 1; //set x direction
+        //The minimum value is inclusive, the max is not. In this case, it'll return integers between 0 & 1.
+            //?: Is this condition true? yes : no
+            //?: condition? consequent:alternative
+        //If it returns a 0, turn it into -1 or 1. 
+        Debug.Log("xDir = " + xDir);//print yDir to console
             //if x = -1, it'll move right. If x = 1, it'll move left
         yDir = Random.Range(0, 2) == 0 ? -1 : 1; //set y direction
-                                                 //if y = -1, it'll move down. If y = 1, it'll move up
+        Debug.Log("yDir = " + yDir);//print yDir to console
+            //if y = -1, it'll move down. If y = 1, it'll move up
             //note difference between integers (whole numbers) and floats (decimals)
 
         //Make Ball Move at Start (fancier angles) 
