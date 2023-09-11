@@ -5,8 +5,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     //Declare Universal Variables 
-    public Rigidbody2D rb; //get Rigidbody 2D component from sprite
-    //private Rigidbody2D rb; //get Rigidbody 2D privately
+    public Rigidbody2D rbBall; //get Rigidbody 2D component from sprite
 
     public float force = 200; //delcare and set force/velocity
     //public float ballSpeed = 5; //declare ballSpeed variable
@@ -15,52 +14,100 @@ public class BallController : MonoBehaviour
     //private float yPos; //get y position
     private float xDir; //declare x direction
     private float yDir; //declare y direction
-   
-    //Vector2 direction; //Vector2 = representation of 2D vectors and points
+
+    public bool inPlay; //set to true/false if ball is in Play, set in Inspector
+    public Vector3 ballStartPos; //Ball starting position, set in Inspector
 
     // Start is called before the first frame update
     void Start()
     {
-        //1. Add a Debug Message
+        //Add a Debug Message, prints to the console
         Debug.Log("Hello World");
 
+        Launch(); //call the Launch Function at Start
 
         //rb = GetComponent<Rigidbody2D>(); 
-        //get the component of the gameobject the script is placed on
-        //comment after showing the global variable
-
-        //Make Ball Move in Random Direction at start
-        xDir = Random.Range(0, 2) == 0 ? -1 : 1; //set x direction
-        //The minimum value is inclusive, the max is not. In this case, it'll return integers between 0 & 1.
-            //?: Is this condition true? yes : no
-            //?: condition? consequent:alternative
-        //If it returns a 0, turn it into -1 or 1. 
-        Debug.Log("xDir = " + xDir);//print yDir to console
-            //if x = -1, it'll move right. If x = 1, it'll move left
-        yDir = Random.Range(0, 2) == 0 ? -1 : 1; //set y direction
-        Debug.Log("yDir = " + yDir);//print yDir to console
-            //if y = -1, it'll move down. If y = 1, it'll move up
-            //note difference between integers (whole numbers) and floats (decimals)
-
-        //Make Ball Move at Start (fancier angles) 
-        //float x = Random.value < 0.5f ? -1.0f : 1.0f; //x coor value, choose left or right
-        //if x is less than half, it'll be one direction, if greater then it is the other
-        //float y = Random.value < 0.5f ? Random.Range(-1.0f, -0.5f):Random.Range(0.5f, 1.0f); //y coor value, choose random angle
-
-        Vector3 direction = new Vector3(xDir, yDir, 0); //create new Vector3 variable
-            //What is a vector?
-            //Vector2(x,y) and Vector3(x,y,z)
-
-        //rb.velocity = new Vector3(ballSpeed * xDir, ballSpeed * yDir); //create a force on the ball
-        //rb.velocity = direction * ballSpeed; //essentially the same as above, just loading the direction variables into one value
-        //rb.velocity = direction * force; //essentially the same as above, just loading the direction variables into one value
-        rb.AddForce(direction * force); //apply force in decided direction
-
+            //get the component of the gameobject the script is placed on
+            //HOT TIP: use a global variable instead and set this in the inspector
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Check if Ball is in Play
+        if (inPlay == false) //if Ball is NOT in Play
+        {
+            transform.position = ballStartPos; //set Ball to start position
+            Launch(); //call Launch() to automatically relaunch the Ball
+        }
 
+        //Check if Spacebar has been pressed to launch the ball
+    }
+
+    private void Launch()
+    {
+        Vector3 direction = new Vector3(0, 0, 0); //create new Vector3 variable
+                                                  //What is a vector?
+                                                  //Vector2 (x,y) = representation of 2D vectors and points
+                                                  //Vector3 (x,y,z) = represenation of 3D vectors and points (can still be used in 2D projects!)
+
+        //MAKE BALL MOVE IN RANDOM DIRECTION AT START
+        //set direction.x
+        xDir = Random.Range(0, 2); //random int between 0 & 1, the second/max number (2) is EXCLUSIVE & won't be included
+        if (xDir == 0)
+        {
+            direction.x = -1; //go Left
+            Debug.Log("xDir = " + direction.x);//print direction.x to console
+        }
+        else if (xDir == 1)
+        {
+            direction.x = 1; //go right
+            Debug.Log("xDir = " + direction.x);//print direction.x to console
+        }
+        //FANCIER WAYS
+        //xDir = Random.Range(0, 2) == 0 ? -1 : 1; //set x direction (Compresses everything above)
+        //xDir = Random.value < 0.5f ? -1.0f : 1.0f; //set x direction (Compresses the above line even more using floats
+
+        //set direction.y
+        yDir = Random.Range(0, 2); //random int between 0 & 1
+        if (yDir == 0)
+        {
+            direction.y = -1; //go Down
+            Debug.Log("yDir = " + direction.y);//print direction.y to console
+        }
+        else if (yDir == 1)
+        {
+            direction.y = 1; //go Up
+            Debug.Log("yDir = " + direction.y);//print direction.y to console
+        }
+        //FANCIER WAYS
+        //yDir = Random.Range(0, 2) == 0 ? -1 : 1; //set y direction
+        //float y = Random.value < 0.5f ? Random.Range(-1.0f, -0.5f):Random.Range(0.5f, 1.0f); //set y direction (Compresses the above line even more using floats and chooses a more random angle)
+
+        //Add force to start movement
+        rbBall.AddForce(direction * force); //apply force in decided direction
+        inPlay = true; //ball is now in Play, = true
+        Debug.Log("inPlay = " + inPlay); //print inPlay value to console
+    }
+
+    //EVENTS UPON COLLISION
+    private void OnCollisionEnter2D(Collision2D collision) //MAKE SURE THIS IS 2D!!! Won't work without the 2D qualifier
+    {
+        //HOT TIP: To dectect collision, at least one object must have a dynamic RigidBody on it
+
+        //Debug.Log("Object that collided w/ Ball: " + collision.gameObject.name); //check if and what our Ball is colliding with
+
+        //when Ball collides with Left or Right Walls, reset to original position at ballStartPos & change score
+        if (collision.gameObject.name == "Left Wall" || collision.gameObject.name == "Right Wall")
+        {
+            //RESET POSITION
+            Debug.Log("hit wall, ball reset"); 
+            rbBall.velocity = Vector3.zero; //zeros out the force being applied to Ball so the force doesn't stack
+            inPlay = false; //set inPlay to False, will cause the inPlay check in Update() to reset the position and automatically Launch()
+
+            //CHANGE SCORE
+
+            //ADD SOUNDS
+        }
     }
 }

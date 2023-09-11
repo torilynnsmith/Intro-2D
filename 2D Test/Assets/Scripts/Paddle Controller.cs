@@ -6,6 +6,8 @@ public class PaddleController : MonoBehaviour
 {
     //DECLARE VARIABLES
     public Rigidbody2D rbPaddle; //get RigidBody2D component
+        //HOT TIP: set RigidBody to Kinematic so they don't go flying if hit with the Ball
+
     public bool isPlayer1; //set which player it is
 
     public float paddleSpeed = 0.05f; //declare and set paddleSpeed
@@ -27,6 +29,7 @@ public class PaddleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if an object is Player1 (set in Inspector) use one set of controls over the other
         if (isPlayer1)
         {
             Player1Control(); 
