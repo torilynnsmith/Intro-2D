@@ -22,7 +22,7 @@ public class BallController : MonoBehaviour
     void Start()
     {
         //Add a Debug Message, prints to the console
-        Debug.Log("Hello World");
+        //Debug.Log("Hello World");
 
         Launch(); //call the Launch Function at Start
 
@@ -57,12 +57,12 @@ public class BallController : MonoBehaviour
         if (xDir == 0)
         {
             direction.x = -1; //go Left
-            Debug.Log("xDir = " + direction.x);//print direction.x to console
+            //Debug.Log("xDir = " + direction.x);//print direction.x to console
         }
         else if (xDir == 1)
         {
             direction.x = 1; //go right
-            Debug.Log("xDir = " + direction.x);//print direction.x to console
+            //Debug.Log("xDir = " + direction.x);//print direction.x to console
         }
         //FANCIER WAYS
         //xDir = Random.Range(0, 2) == 0 ? -1 : 1; //set x direction (Compresses everything above)
@@ -73,12 +73,12 @@ public class BallController : MonoBehaviour
         if (yDir == 0)
         {
             direction.y = -1; //go Down
-            Debug.Log("yDir = " + direction.y);//print direction.y to console
+            //Debug.Log("yDir = " + direction.y);//print direction.y to console
         }
         else if (yDir == 1)
         {
             direction.y = 1; //go Up
-            Debug.Log("yDir = " + direction.y);//print direction.y to console
+            //Debug.Log("yDir = " + direction.y);//print direction.y to console
         }
         //FANCIER WAYS
         //yDir = Random.Range(0, 2) == 0 ? -1 : 1; //set y direction
@@ -87,7 +87,7 @@ public class BallController : MonoBehaviour
         //Add force to start movement
         rbBall.AddForce(direction * force); //apply force in decided direction
         inPlay = true; //ball is now in Play, = true
-        Debug.Log("inPlay = " + inPlay); //print inPlay value to console
+        //Debug.Log("inPlay = " + inPlay); //print inPlay value to console
     }
 
     //EVENTS UPON COLLISION
@@ -101,13 +101,16 @@ public class BallController : MonoBehaviour
         if (collision.gameObject.name == "Left Wall" || collision.gameObject.name == "Right Wall")
         {
             //RESET POSITION
-            Debug.Log("hit wall, ball reset"); 
+            //Debug.Log("hit wall, ball reset"); 
             rbBall.velocity = Vector3.zero; //zeros out the force being applied to Ball so the force doesn't stack
             inPlay = false; //set inPlay to False, will cause the inPlay check in Update() to reset the position and automatically Launch()
 
-            //CHANGE SCORE
-
-            //ADD SOUNDS
+            //OTHER THINGS WE COULD DO HERE WITH COLLISIONS!
+            //1. Change Score: You could change score here upon collision instead of a separate trigger!
+                //This might be helpful if the ball were something like: a spaceship collecting moving treasure or hitting multiple moving asteroids.
+            //2. Add sounds!
+            //3. Change how the sprite looks.
+            //All kinds of stuff! The possibilities are endless! The world is your oyster! 
         }
     }
 }
