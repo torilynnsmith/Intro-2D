@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using TMPro; //add in a new Unity Library so we can use the UI elements
+using TMPro; //add in a new Unity Library so we can use the UI elements
 
 public class GameManager : MonoBehaviour
 {
     //GLOBAL VARIABLES
 
     //Game Objects for UI Elements
-    //public TextMeshProUGUI player1ScoreText; //Text Object for Player 1 Score, set in inspector
+    public TextMeshProUGUI player1ScoreText; //Text Object for Player 1 Score, set in inspector
     //public TextMeshProUGUI player2ScoreText; //Text Object for Player 2 Score, set in inspector
 
     //Scores
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //update the player scores
-        //player1ScoreText.text = "P1: " + player1Score; //update Player 1's Score UI
+        player1ScoreText.text = "Player 1 Score: " + player1Score; //update Player 1's Score UI
         //player2ScoreText.text = "P2: " + player2Score; //update Player 2's Score UI
     }
 
