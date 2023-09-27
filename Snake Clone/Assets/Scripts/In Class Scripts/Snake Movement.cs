@@ -34,12 +34,22 @@ public class SnakeMovement : MonoBehaviour
     {
         //Debug.Log("Change Direction called"); //print to console
 
-        //Move Left
+        //MOVE LEFT
         if (Input.GetKey(KeyCode.LeftArrow)) //if left arrow key is pushed, then...
         {
-            //do this
-            dir = Vector3.left; //move left
+            dir = Vector3.left; //change the movement direction to LEFT
+        } //MOVE RIGHT
+        else if (Input.GetKey(KeyCode.RightArrow)) //if the right arrow key is pushed, then...
+        {
+            dir = Vector3.right; //change the movement direction to RIGHT
+        } //MOVE UP
+        else if (Input.GetKey(KeyCode.UpArrow)) //if the up arrow key is pushed, then...
+        {
+            dir = Vector3.up; //change the movement direction to UP
+        } //MOVE DOWN
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            dir = Vector3.down; //change the movement direction to DOWN
         }
-        //MAKE IT MOVE THE OTHER 3 DIRECTIONS, RIGHT, UP, DOWN
     }
 }
