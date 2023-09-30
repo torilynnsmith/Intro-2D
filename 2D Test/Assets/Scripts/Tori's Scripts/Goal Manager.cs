@@ -32,13 +32,13 @@ public class GoalManager : MonoBehaviour
                 //! = is not
                 //so, if this is written as !isPlayer1Goal, then it's referring to Player 2's goal area
             {
-                Debug.Log("Player 1 Scored"); //print this message to the console
+                //Debug.Log("Player 1 Scored"); //print this message to the console
                 myManager.Player1Scored(); //call the Player1Scored() funciton from the Game Manager
 
             }
             else //if the Trigger is on the Player 1 Goal
             {
-                Debug.Log("Player 2 Scored"); //print this message to the console
+                //Debug.Log("Player 2 Scored"); //print this message to the console
                 myManager.Player2Scored(); //call the Player2Scored() function from the Game Manager
             }
         }

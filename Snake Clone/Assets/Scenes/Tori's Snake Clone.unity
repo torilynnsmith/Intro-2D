@@ -867,6 +867,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3070443098923239592, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070443098923239592, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070443098923239592, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8135687862986933657, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
       propertyPath: m_Name
       value: Head
@@ -896,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b52ff6b5b6aa4dddad3634f52786090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailPrefab: {fileID: 8135687862986933657, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

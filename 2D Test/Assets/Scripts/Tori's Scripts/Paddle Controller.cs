@@ -16,10 +16,6 @@ public class PaddleController : MonoBehaviour
     //public KeyCode upKey; //declare and set in Inspector
     //public KeyCode downKey; //declare and set in Inspector
 
-    //Set Borders (If we wanted the option to reset the paddle to the otherside and make it continuous
-    //public float leftBorder; //ref Left Border
-    //public float rightBorder; //ref Right Border
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,36 +56,79 @@ public class PaddleController : MonoBehaviour
     {
         Vector3 newPos = transform.position; //declare a new Vector3 variable, newPos (New Position)
 
-        if (Input.GetKey(KeyCode.W)) //if W is pressed...
+        //If paddle is w/i play area, allow movement
+        //NOTE: We've set our border values here to approximately where the paddles would hit the Wall objects.
+        //Basically, this is hardcoding collision! 
+        if (newPos.y <= 4.1f && newPos.y >= -4.1f) //NOTE: used floats to get it as close to the border as possible
         {
-            //Debug.Log("W pressed");
-            newPos.y += paddleSpeed; //affect y coordinate up = move paddle up
-            //direction = Vector2.up; //move paddle up
+            //Debug.Log("Player1 Controller in play area"); //print to console
+
+            //PLAYER MOVEMENT CONTROLS
+            if (Input.GetKey(KeyCode.W)) //if W is pressed...
+            {
+                //Debug.Log("W pressed");
+                newPos.y += paddleSpeed; //affect y coordinate up = move paddle up
+                                         //direction = Vector2.up; //move paddle up
+            }
+            else if (Input.GetKey(KeyCode.S)) //if S is pressed
+            {
+                //Debug.Log("S pressed");
+                newPos.y -= paddleSpeed; //affect y coordinate down = move paddle down
+                                         //direction = Vector2.down; //move paddle down
+            }
+
+            transform.position = newPos; //update player 1 paddle with the new position
         }
-        else if (Input.GetKey(KeyCode.S)) //if S is pressed
+        //reset paddle to be within the play area
+        if (newPos.y >= 4.1f) //if the y position is greater than or equal to 4...
         {
-            //Debug.Log("S pressed");
-            newPos.y -= paddleSpeed; //affect y coordinate down = move paddle down
-            //direction = Vector2.down; //move paddle down
+            newPos.y = 4; //set the y position value to 3.9f
+            transform.position = newPos; //update player 1 paddle with the new position
+            //Debug.Log("newPos.y = " + newPos.y);
+        } else if (newPos.y <= -4.1f) //if the y position is less than or equal to -4...
+        {
+            newPos.y = -4; //set the y position value to 3.9f
+            transform.position = newPos; //update player 1 paddle with the new position
+            //Debug.Log("newPos.y = " + newPos.y);
         }
 
-        transform.position = newPos; //update player 1 paddle with the new position
     }
 
     void Player2Control()
     {
         Vector3 newPos = transform.position; //declare a new Vector3 variable, newPos (New Position)
 
-        if (Input.GetKey(KeyCode.UpArrow)) //if Up Arrow is pressed
+        if (newPos.y <= 4.1f && newPos.y >= -4.1f) //NOTE: used floats to get it as close to the border as possible
         {
-            newPos.y += paddleSpeed; //affect y coordinate up = move paddle up
-        }
-        else if (Input.GetKey(KeyCode.DownArrow)) //if Down Arrow is pressed
-        {
-            newPos.y -= paddleSpeed; //affect y coordinate down = move paddle down
+            //Debug.Log("Player2 Controller in play area"); //print to console
+
+            //PLAYER MOVEMENT CONTROLS
+            //This is the same process as Player1Control! 
+            if (Input.GetKey(KeyCode.UpArrow)) //if Up Arrow is pressed
+            {
+                newPos.y += paddleSpeed; //affect y coordinate up = move paddle up
+            }
+            else if (Input.GetKey(KeyCode.DownArrow)) //if Down Arrow is pressed
+            {
+                newPos.y -= paddleSpeed; //affect y coordinate down = move paddle down
+
+            }
+
+            transform.position = newPos; //update player 2 paddle with new position
 
         }
-
-        transform.position = newPos; //update player 2 paddle with new position
+        //reset paddle to be within the play area
+        if (newPos.y >= 4.1f) //if the y position is greater than or equal to 4...
+        {
+            newPos.y = 4; //set the y position value to 3.9f
+            transform.position = newPos; //update player 2 paddle with the new position
+            //Debug.Log("newPos.y = " + newPos.y);
+        }
+        else if (newPos.y <= -4.1f) //if the y position is less than or equal to -4...
+        {
+            newPos.y = -4; //set the y position value to 3.9f
+            transform.position = newPos; //update player 2 paddle with the new position
+            //Debug.Log("newPos.y = " + newPos.y);
+        }
     }
 }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     //Game Objects for UI Elements
     public TextMeshProUGUI player1ScoreText; //Text Object for Player 1 Score, set in inspector
-    //public TextMeshProUGUI player2ScoreText; //Text Object for Player 2 Score, set in inspector
+    public TextMeshProUGUI player2ScoreText; //Text Object for Player 2 Score, set in inspector
 
     //Scores
     private int player1Score = 0; //declare and set integer variable for Player 1 Score
@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //update the player scores
-        player1ScoreText.text = "Player 1 Score: " + player1Score; //update Player 1's Score UI
-        //player2ScoreText.text = "P2: " + player2Score; //update Player 2's Score UI
+        player1ScoreText.text = "P1: " + player1Score; //update Player 1's Score UI
+        player2ScoreText.text = "P2: " + player2Score; //update Player 2's Score UI
     }
 
     //When Player 1 Scores, run this function
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void Player1Scored()
     {
         player1Score++; //add 1 to score value
-        Debug.Log("Player 1 Score: " + player1Score); //print player1Score to the console
+        //Debug.Log("Player 1 Score: " + player1Score); //print player1Score to the console
     }
 
     //When Player 2 Scores, run this function
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public void Player2Scored()
     {
         player2Score++; //add 1 to score value
-        Debug.Log("Player 2 Score: " + player2Score); //print player2Score to the console
+        //Debug.Log("Player 2 Score: " + player2Score); //print player2Score to the console
     }
 
 

@@ -13,10 +13,13 @@ public class Snake : MonoBehaviour
 
     //Keep Track of Tail Elements we'll be adding
     List<Transform> tail = new List<Transform>(); //declare a list variable
+    bool ate = false; //set a bool to determine if the snake has eaten something. Will change upon Trigger w/ FoodPrefabs
+    public GameObject tailPrefab; //set the TailPrefab in the Inspector to Instantiate it through code. 
 
     // Start is called before the first frame update
     void Start()
     {
+        //OPTION: Randomize the direction of the snake like our Pong Ball 
         //Call MoveSnake() every 300ms(0.3 seconds) to move the snake
         InvokeRepeating("MoveSnake", 0.3f, 0.3f);
         //InvokeRepeating("methodName", time, repeatRate)
@@ -48,6 +51,25 @@ public class Snake : MonoBehaviour
         transform.Translate(dir);
             //Translate moves the transform property in the direction and distance of the translation,
             //In this case, we are moving in the whatever direction we've set the dir variable to be
+
+        //Check if the snake has eaten something (ate = true)
+        if (ate) //if ate = true. We don't need to write out ate = true, but you can
+        {
+            //Load the TailPrefab intro the scene as a tailSec (Tail Section) GameObject
+            GameObject tailSec = (GameObject)Instantiate(tailPrefab, gap, Quaternion.identity);
+            //This works similarly to Instantiating our food prefabs into the scene!
+            //1. We've declared a new GameObject variable
+            //2. We've filled in the 3 parameters for Instatiating:
+                //1. the name of the gameObject we're instantiating (tailPrefab)
+                //2. where (position(x,y,z)) we're instantiating it (gap)
+                //3. the rotation at which we're instantiating it (Quaternion.identity)
+
+            //Keep track of this tail section in our tail list
+            tail.Insert(0, tailSec.transform);
+
+            //reset the ate bool so we can eat again!
+            ate = false; 
+        }
 
         //Check if the snake has a tail
         if (tail.Count > 0) //if the Tail amount is greater than 0, then...
@@ -91,7 +113,27 @@ public class Snake : MonoBehaviour
             //Debug.Log("direction = down"); //print to console
         }
     }
+    //When Snake Collides with Food, a Border, or Itself, do something
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //When Snake collides with Food...
+        if(collision.gameObject.tag == "Food")
+            //NOTE: The elegant way to check for this collision is to add a Tag to your prefab, rather than check the Name of the game object. 
+            //Make sure your Food PREFAB is tagged and saved! 
+        {
+            ate = true; //set ate bool to True
+                //See the MoveSnake() function for making the snake longer
 
-    //NEXT STEPS -
-    //1. create an OnTriggerEnter2D function so that when the snake collides with a foodPrefab, it will add a tail element
+            //Remove the Food
+            Destroy(collision.gameObject); //destroy the foodPrefab that the snake Head has touched
+
+            //NEXT STEPS: Change Score
+
+        } //When the Snake collides with the Tail or the Borders
+        else
+        {
+            //NEXT STEPS: reset the snake Head position (just like the ball) and reset the score when the snake head makes contact with the walls or its own tail
+        }
+    }
+
 }
