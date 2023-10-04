@@ -33,11 +33,11 @@ public class MeatSpawn : MonoBehaviour
 
         //set x position b/w Left & Right borders.
         int xPos = (int)Random.Range(borderLeft.position.x+10, borderRight.position.x-10);
-        Debug.Log("xPos =" + xPos);
+        //Debug.Log("xPos =" + xPos);
 
         //set y position b/w Top & Bottom borders.
         int yPos = (int)Random.Range(borderBottom.position.y + 10, borderTop.position.y - 10);
-        Debug.Log("yPos = " + yPos);
+        //Debug.Log("yPos = " + yPos);
 
         //INSTANTIATE a new food prefab at (xPos,yPos) coordinates
         Instantiate(foodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity);

@@ -52,4 +52,16 @@ public class SnakeMovement : MonoBehaviour
             dir = Vector3.down; //change the movement direction to DOWN
         }
     }
+
+    //When the Snake collides with a trigger of something...
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Meat") //if snake collides with Meat/Food..
+        {
+            //do this
+            Debug.Log("Meat destroyed. Yum."); //print to the console
+            Destroy(collision.gameObject);
+          
+        }
+    }
 }

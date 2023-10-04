@@ -18,7 +18,7 @@ public class FoodSpawn : MonoBehaviour
     {
         //Spawn food every 4 seconds, 3 seconds after the scene starts
         InvokeRepeating("Spawn", 3, 4);
-            //NEXT STEPS: change this to a single Invoke and then only instantiate a new one after the previous one has been eaten
+        //NEXT STEPS: change this to a single Invoke and then only instantiate a new one after the previous one has been eaten
     }
 
     // Update is called once per frame
