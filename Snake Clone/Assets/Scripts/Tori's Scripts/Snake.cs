@@ -16,6 +16,8 @@ public class Snake : MonoBehaviour
     bool ate = false; //set a bool to determine if the snake has eaten something. Will change upon Trigger w/ FoodPrefabs
     public GameObject tailPrefab; //set the TailPrefab in the Inspector to Instantiate it through code. 
 
+    public GameManager myManager; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,7 +129,9 @@ public class Snake : MonoBehaviour
             //Remove the Food
             Destroy(collision.gameObject); //destroy the foodPrefab that the snake Head has touched
 
-            //NEXT STEPS: Change Score
+            //Change Score
+            myManager.FoodEaten(); //call the Food Eaten Funciton to change the score. 
+
 
         } //When the Snake collides with the Tail or the Borders
         else

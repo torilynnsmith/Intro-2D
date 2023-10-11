@@ -7,7 +7,6 @@ public class SnakeMovement : MonoBehaviour
     //GLOBAL VARIABLES
     Vector3 dir = Vector3.right; //declared a default movement direction of RIGHT
 
-
     // Start is called before the first frame update
     void Start()
     {
