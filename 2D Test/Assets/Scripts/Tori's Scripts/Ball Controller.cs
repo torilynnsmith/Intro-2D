@@ -18,6 +18,8 @@ public class BallController : MonoBehaviour
     public bool inPlay; //set to true/false if ball is in Play, set in Inspector
     public Vector3 ballStartPos; //Ball starting position, set in Inspector
 
+    public bool isBallOne; //differentiate b/w ball1 and ball2
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,15 +56,26 @@ public class BallController : MonoBehaviour
         //MAKE BALL MOVE IN RANDOM DIRECTION AT START
         //set direction.x
         xDir = Random.Range(0, 2); //random int between 0 & 1, the second/max number (2) is EXCLUSIVE & won't be included
-        if (xDir == 0)
+        //if (xDir == 0)
+        //{
+        //    direction.x = -1; //go Left
+        //    //Debug.Log("xDir = " + direction.x);//print direction.x to console
+        //}
+        //else if (xDir == 1)
+        //{
+        //    direction.x = 1; //go right
+        //    //Debug.Log("xDir = " + direction.x);//print direction.x to console
+        //}
+
+        //If you have 2 Balls, set which direction they go
+        if (isBallOne) //if Ball 1
         {
             direction.x = -1; //go Left
-            //Debug.Log("xDir = " + direction.x);//print direction.x to console
-        }
-        else if (xDir == 1)
+            //Debug.Log("Ball One went Left"); 
+        } else //if Ball 2
         {
-            direction.x = 1; //go right
-            //Debug.Log("xDir = " + direction.x);//print direction.x to console
+            direction.x = 1; //go Right
+            //Debug.Log("Ball Two went Right"); 
         }
         //FANCIER WAYS
         //xDir = Random.Range(0, 2) == 0 ? -1 : 1; //set x direction (Compresses everything above)

@@ -26,7 +26,7 @@ public class GoalManager : MonoBehaviour
         //you could also do this as a true collision on the walls, but I want you to see how triggers work!
         //If a collider is a trigger, objects will pass right through it, but a "collision" will still be registered
     {
-        if (collision.gameObject.name == "Ball") //if the Ball collide with the Goal areas
+        if (collision.gameObject.tag == "Ball") //if the Ball collide with the Goal areas
         {
             if (!isPlayer1Goal) //if the Trigger is on the Player 2 Goal (check your bool!)
                 //! = is not
