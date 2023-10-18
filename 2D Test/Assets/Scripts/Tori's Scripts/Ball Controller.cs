@@ -26,6 +26,8 @@ public class BallController : MonoBehaviour
         //Add a Debug Message, prints to the console
         //Debug.Log("Hello World");
 
+        //Debug.Log("Start(). force = " + force); 
+
         Launch(); //call the Launch Function at Start
 
         //rb = GetComponent<Rigidbody2D>(); 

@@ -85,7 +85,8 @@ public class PaddleController : MonoBehaviour
             newPos.y = 4; //set the y position value to 3.9f
             transform.position = newPos; //update player 1 paddle with the new position
             //Debug.Log("newPos.y = " + newPos.y);
-        } else if (newPos.y <= -4.1f) //if the y position is less than or equal to -4...
+        }
+        else if (newPos.y <= -4.1f) //if the y position is less than or equal to -4...
         {
             newPos.y = -4; //set the y position value to 3.9f
             transform.position = newPos; //update player 1 paddle with the new position
