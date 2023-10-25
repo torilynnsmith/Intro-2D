@@ -48,12 +48,12 @@ public class SceneChanger : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("StartScene() Called"); //print to console
+            //Debug.Log("StartScene() Called"); //print to console
             SceneManager.LoadScene("Start Scene"); //Load Start Scene
         }
         else if (Input.GetKeyDown(KeyCode.M))
         {
-            Debug.Log("MainScene() Called"); //print to console
+            //Debug.Log("MainScene() Called"); //print to console
             SceneManager.LoadScene("Main Scene"); //Load Main Scene
         }
     }
@@ -65,22 +65,37 @@ public class SceneChanger : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("MainScene() Called"); //print to console
+            //Debug.Log("MainScene() Called"); //print to console
             SceneManager.LoadScene("Main Scene"); //Load Main Scene
         }
     }
+
     public void EndScene() //go to End Scene when a key is pressed
     {
         //if (Input.GetKey(KeyCode.Space)) //if Space is pressed, called as long as key is pressed
         if (Input.GetKeyDown(KeyCode.Space)) //if Space is pressed, called only once
         //if (Input.GetKeyDown(sceneKey)) //if sceneKey is pressed, called only once
         {
-            Debug.Log("EndScene() Called"); //print to console
+            //Debug.Log("EndScene() Called"); //print to console
             SceneManager.LoadScene("End Scene"); //Load End Scene
         }
         //Debug.Log("EndScene() Called"); //print to console
         //SceneManager.LoadScene("End Scene"); //Load End Scene
                                              //NOTE: You need to import all the scenes you're switching between
                                              //in your build settings before this will work!
+    }
+
+    //CHANGE SCENE W/ BUTTON AND SCENE ID.
+    //This is the more efficient way w/o having to write a specific new function for each scene change (which we already have for keycode checks)
+    public void MoveToScene(int sceneID) //added in a "value parameter", similar to our Collision 2D code!
+        //Here, I've declared and am grabbing values for a new int variable "sceneID"
+    {
+        //NOTE: You will need to add the default Event System Object back to your hierarchy to recognize mouse clicks
+
+        //Debug.Log("MoveToScene Called"); //print to console
+        //SceneManager.LoadScene("End Scene"); //call a scene specifically by it's name
+        //OR
+        SceneManager.LoadScene(sceneID); //load a scene based on its Scene ID # in Build Settings.
+            //Set this number in the Inspector
     }
 }
