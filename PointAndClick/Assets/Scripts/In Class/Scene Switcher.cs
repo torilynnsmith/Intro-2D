@@ -66,4 +66,11 @@ public class SceneSwitcher : MonoBehaviour
         }
     }
 
+    public void GoToScene(int sceneID)
+    {
+        //Debug.Log("GoToScene() called."); //print to console
+        Debug.Log("sceneID = " + sceneID);
+        SceneManager.LoadScene(sceneID); 
+    }
+
 }
