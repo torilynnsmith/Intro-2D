@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -98,4 +99,5 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene(sceneID); //load a scene based on its Scene ID # in Build Settings.
             //Set this number in the Inspector
     }
+
 }
