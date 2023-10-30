@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //use Scene Management Library
 
+//THIS IS TORI'S SCRIPT
+
 public class SceneChanger : MonoBehaviour
 {
     //GLOBAL VARIALBES

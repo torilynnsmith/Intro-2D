@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //use Scene Managment Library
 
+//THIS IS THE IN CLASS SCRIPT
+
 public class SceneSwitcher : MonoBehaviour
 {
     //GLOBAL VARIABLE

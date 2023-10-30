@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; //add and use the TMPro library
 
+//THIS IS TORI'S SCRIPT
+
 public class Timer : MonoBehaviour
     //attached to Timer Text Object
 {
@@ -38,7 +40,7 @@ public class Timer : MonoBehaviour
                 timeRemaining -= Time.deltaTime; //subtract the duration of the prevous frame from time remaining
                                                  //deltaTime is the duration of the previous frame
             }
-            else //if there is 0 timeRemaining (Time has Run Out)
+            else if (timeRemaining <= 0) //if there is 0 timeRemaining (Time has Run Out)
             {
                 Debug.Log("Time has run out!"); //print to console
                 timeRemaining = 0; //lock timeRemaing to 0 so it doesn't go into negative numbers
@@ -47,19 +49,23 @@ public class Timer : MonoBehaviour
 
             }
 
-            DisplayTime(timeRemaining); //display the time, pass in timeRemaining as the parameter
+            //DisplayTime(timeRemaining); //display the time, pass in timeRemaining as the parameter to equate to the float timeToDisplay
+            DisplayTime(); //display the time, pass in timeRemaining as the parameter
+
         }
 
     }
 
     //Display the timeRemaining through UI Text
-    void DisplayTime(float timeToDisplay) //added in a "value parameter", similar to our Collision 2D code!
+    //void DisplayTime(float timeToDisplay) //added in a "value parameter", similar to our Collision 2D code!
+        //creating a void with a passed in parameter is not entirely necessary
+    void DisplayTime() //added in a "value parameter", similar to our Collision 2D code!
     {
         //check if timeToDisplay is < 0 and lock it to 0 if it is not
-        if (timeToDisplay <= 0)
-        {
-            timeToDisplay = 0; //lock timeToDisplay to 0
-        }
+        //if (timeToDisplay <= 0)
+        //{
+        //    timeToDisplay = 0; //lock timeToDisplay to 0
+        //}
 
         //Divide the timeRemaining by 60
         float minutes = Mathf.FloorToInt(timeRemaining / 60); //calculate minutes
