@@ -23,7 +23,7 @@ public class Drag : MonoBehaviour
         //if the object is being dragged
         if (isDragging)
         {
-            Debug.Log("isDragging");
+            //Debug.Log("isDragging");
             //move the object with the mouse (take into account original offset)
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
                 //Get the Main Camera object

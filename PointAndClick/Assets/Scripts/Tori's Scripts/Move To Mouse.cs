@@ -12,12 +12,16 @@ public class MoveToMouse : MonoBehaviour
     void Start()
     {
         //set the target to the starting position of the object (it won't be moving at first)
-        target = transform.position; 
+        target = transform.position;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //TO DO: A CHECK TO SEE IF AN ITEM IS BEING DRAGGED OR NOT TO KEEP THIS FROM CHASING THE MOUSE POSITION
+
         if(Input.GetMouseButtonDown(0))
             //similar to GetKey stuff! GetMouseButtonDown only returns for the first frame the mouse button is clicked
             //0 = Left Mouse, 1 = Right Mouse
