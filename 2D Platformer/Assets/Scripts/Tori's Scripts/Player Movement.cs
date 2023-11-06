@@ -15,8 +15,9 @@ public class PlayerMovement : MonoBehaviour
     //GLOBAL VARIABLES
     public Rigidbody2D playerBody; //set Rigidbody variable for the player in Inspector
 
-    public float playerSpeed = 0.1f; //declare and set playerSpeed
+    public float playerSpeed = 0.05f; //declare and set playerSpeed
     public float jumpForce = 500; //declare and set jumpForce
+    public bool isJumping = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,15 +56,31 @@ public class PlayerMovement : MonoBehaviour
     //Jump Player via Spacebar
     private void Jump()
     {
+
         //NOTE: As written, this allows infinite double jumping! How can you limit that?
 
-        if (Input.GetKeyDown(KeyCode.Space)) //when the Spacebar is pressed (first frame only)
+        if (!isJumping && Input.GetKeyDown(KeyCode.Space)) //when the Spacebar is pressed (first frame only)
         {
             playerBody.AddForce(new Vector3(playerBody.velocity.x, jumpForce, 0)); //apply force in decided direction
             //Similar to launching our Pong Ball! We're just declaring the new Vector 3 in the same line.
             //This Vector 3 keeps the same velocity.x (to keep moving in whatever x direction), but changes the y to jumpForce, and doesn't change the z at all. 
+            isJumping = true;
+            //Debug.Log("isJumping = " + isJumping); //print to console
+            //reset is jumping on collision with a surface??
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Surface")
+        {
+            //Debug.Log("collided w/ surface"); //print to console
+            isJumping = false;
+            //Debug.Log("isJumping = " + isJumping); //print to console
 
         }
     }
+
+
 
 }
