@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D playerBody; //set Rigidbody variable for the player in Inspector
 
     public float playerSpeed = 0.05f; //declare and set playerSpeed
-    public float jumpForce = 500; //declare and set jumpForce
+    public float jumpForce = 300; //declare and set jumpForce
     public bool isJumping = false;
 
     //Player Health
@@ -103,12 +103,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Damage the player
-    void TakeDamage(int damage)
+    //Damage the player (make public to access from other scripts!) 
+    public void TakeDamage(int damage)
     {
-        //Debug.Log("TakeDamage() called");
         currentHealth -= damage; //reduce current health by damage amount
         healthBar.SetHealth(currentHealth); //set the SetHealth(int) to the currentHealth value from this script
+
+        //Debug.Log("TakeDamage() called"); //print to console
+        //Debug.Log("currentHealth = " + currentHealth); //print to console
+
+        //if currentHealth = 0, destroy the player sprite
+        //Could also go to a game over screen or restart the level! 
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject); 
+        }
     }
 
 
