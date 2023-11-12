@@ -13,16 +13,25 @@ public class PlayerMovement : MonoBehaviour
     //That's it! 
 
     //GLOBAL VARIABLES
+    //Player movement
     public Rigidbody2D playerBody; //set Rigidbody variable for the player in Inspector
 
     public float playerSpeed = 0.05f; //declare and set playerSpeed
     public float jumpForce = 500; //declare and set jumpForce
     public bool isJumping = false;
 
+    //Player Health
+    public int maxHealth = 20; //set and declare the maxHealth
+    public int currentHealth; //declare currentHealth
+
+    public LifeBar healthBar; //reference the Life Bar (HealthBar) script, set in inspector
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth; //set currentHealth equal to maxHealth
+        healthBar.SetMaxHealth(maxHealth); //set the SetMaxHealth(int) to the maxHealth value from this script
     }
 
     // Update is called once per frame
@@ -31,6 +40,12 @@ public class PlayerMovement : MonoBehaviour
         //I've decided to put these movements in separate functions for organizational reasons! 
         MovePlayer(); //call MovePlayer() function
         Jump();
+
+        //Take damage test
+        //if (Input.GetKeyDown(KeyCode.Y)) //when Y is pressed, first frame only
+        //{
+        //    TakeDamage(1); //call TakeDamage and feed it an int value of 1 (player will take 1 damage) 
+        //}
     }
 
     //Move Player Left & Right via A & D keys
@@ -72,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //when colliding with a surface (ground, safe obstacles, etc.)
         if (collision.gameObject.tag == "Surface")
         {
             //Debug.Log("collided w/ surface"); //print to console
@@ -79,6 +95,20 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("isJumping = " + isJumping); //print to console
 
         }
+
+        //When colliding with a dangerous object (lava, enemy, etc.)
+        if (collision.gameObject.name == "Lava Rock")
+        {
+            TakeDamage(1); //call TakeDamage(), reduce health by 1
+        }
+    }
+
+    //Damage the player
+    void TakeDamage(int damage)
+    {
+        //Debug.Log("TakeDamage() called");
+        currentHealth -= damage; //reduce current health by damage amount
+        healthBar.SetHealth(currentHealth); //set the SetHealth(int) to the currentHealth value from this script
     }
 
 
