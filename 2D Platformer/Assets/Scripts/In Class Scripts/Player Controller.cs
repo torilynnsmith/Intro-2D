@@ -10,12 +10,19 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 0.05f;
 
     public float jumpForce = 500;
-    public bool isJumping = false; 
+    public bool isJumping = false;
+
+    //HEALTH STUFF
+    public HealthBar healthBar;
+
+    public int maxHealth = 20;
+    public int currentHealth; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth); 
     }
 
     // Update is called once per frame
@@ -59,5 +66,18 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             //Debug.Log("isJumping = " + isJumping);
         }
+
+        if(collision.gameObject.name == "Fire")
+        {
+            TakeDamage(5); 
+        }
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("TakeDamage() called. damage = " + damage);
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
