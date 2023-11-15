@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //GLOBAL VARIABLES
+    //MOVEMENT STUFF
     public Rigidbody2D playerBody; 
 
     public float playerSpeed = 0.05f;
