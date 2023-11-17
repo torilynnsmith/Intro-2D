@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
     public LifeBar healthBar; //reference the Life Bar (HealthBar) script, set in inspector
 
+    //"flip" direction (for projectiles)
+    public bool flippedLeft; //keeps track of which way our sprite is facing
+    public bool facingRight; //keeps track of which way our Player should be facing
 
     // Start is called before the first frame update
     void Start()
@@ -57,11 +60,15 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log("A pressed."); //print to console
             newPos.x -= playerSpeed; //affect x coordinate left
+            facingRight = false; //facing/moving Left
+            Flip(false); //call Flip(), feed it a bool
         }
         else if (Input.GetKey(KeyCode.D)) //Move Right w/ D Key
         {
             //Debug.Log("D pressed."); //print to console
             newPos.x += playerSpeed; //affect x coordinate right
+            facingRight = true; //facing/moving Right
+            Flip(true); //call Flip(), feed it a bool
         }
 
         transform.position = newPos; //update player object with the new position
@@ -117,6 +124,24 @@ public class PlayerMovement : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject); 
+        }
+    }
+
+    //flip the launch point for projectiles so it will fire in both directions
+    void Flip (bool facingRight)
+    {
+        //Debug.Log("Flip() called. facingRight = " + facingRight); //print to console
+
+        if (flippedLeft && facingRight) //if player is flipped Left but facing right...
+        {
+            transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
+            flippedLeft = false; 
+        }
+
+        if (!flippedLeft && !facingRight) //if player is flipped right vut facing left
+        {
+            transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
+            flippedLeft = true; 
         }
     }
 
