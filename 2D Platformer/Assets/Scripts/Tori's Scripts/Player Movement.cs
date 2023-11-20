@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //This is Tori's Version of the Player Controller Script
+
     //NOTE
     //Make a Camera follow your Player
     //1. Install Cinemachine via the Package Manager
@@ -128,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //flip the launch point for projectiles so it will fire in both directions
+    //you can also flip the sprite if you'd like, I just don't have that coded here. 
     void Flip (bool facingRight)
     {
         //Debug.Log("Flip() called. facingRight = " + facingRight); //print to console

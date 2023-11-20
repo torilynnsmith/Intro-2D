@@ -7,7 +7,7 @@ public class FireballLaunch : MonoBehaviour
     //THIS SCRIPT LIVES ON THE PLAYER, NOT THE LAUNCH POINT
 
     //GLOBAL VARIABLES
-    public GameObject projectilePrefab; //declare and set the projectilePrefab GameObjrct in the Inspector
+    public GameObject projectilePrefab; //declare and set the projectilePrefab GameObject in the Inspector
     public Transform launchPoint; //the position from which a projectile will launch
 
     public float shootTime; //cooldown time amount b/w projectile firing, set in inspector
@@ -17,7 +17,7 @@ public class FireballLaunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shootCounter = shootTime; 
+        shootCounter = shootTime; //set the shootCounter timer equal to shootTime when the scene starts
     }
 
     // Update is called once per frame

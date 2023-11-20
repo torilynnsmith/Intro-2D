@@ -23,9 +23,11 @@ public class Fireball : MonoBehaviour
     void Start()
     {
         projectileCount = projectileLife; //set projectileCount equal to projectile Life
+
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //find the Player Movement script through code
         //we get the reference to the script this way b/c the projectile is a prefab and we can't set it in in the inspector anymore
+
         facingRight = playerMovement.facingRight; //get the facingRight value from the Player Movement script and equate it to the facingRight in THIS SCRIPT
         if(!facingRight) //if the player is facing Left...
         {
