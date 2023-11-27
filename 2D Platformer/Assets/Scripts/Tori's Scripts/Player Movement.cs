@@ -29,8 +29,8 @@ public class PlayerMovement : MonoBehaviour
     public LifeBar healthBar; //reference the Life Bar (HealthBar) script, set in inspector
 
     //"flip" direction (for projectiles)
-    public bool flippedLeft; //keeps track of which way our sprite is facing
-    public bool facingRight; //keeps track of which way our Player should be facing
+    public bool flippedLeft; //keeps track of which way our sprite IS facing
+    public bool facingRight; //keeps track of which way our Player SHOULD be facing
 
     // Start is called before the first frame update
     void Start()
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
             flippedLeft = false; 
         }
 
-        if (!flippedLeft && !facingRight) //if player is flipped right vut facing left
+        if (!flippedLeft && !facingRight) //if player is flipped right but facing left
         {
             transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
             flippedLeft = true; 

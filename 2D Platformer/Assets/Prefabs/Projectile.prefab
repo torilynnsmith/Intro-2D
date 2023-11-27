@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRb: {fileID: 372122231250022917}
-  speed: 5
+  speed: 7
   projectileLife: 2
   projectileCountDown: 0

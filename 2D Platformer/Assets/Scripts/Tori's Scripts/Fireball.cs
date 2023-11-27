@@ -31,7 +31,7 @@ public class Fireball : MonoBehaviour
         facingRight = playerMovement.facingRight; //get the facingRight value from the Player Movement script and equate it to the facingRight in THIS SCRIPT
         if(!facingRight) //if the player is facing Left...
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0); //rotate the project 180 degrees to the left
+            transform.rotation = Quaternion.Euler(0, 180, 0); //rotate the projectile 180 degrees to the left
             //Quaternion.Euler returns rotation values and applies them
         }
     }
