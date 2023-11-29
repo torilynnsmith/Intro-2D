@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
     public bool flippedLeft; //keeps track of which way our sprite IS facing
     public bool facingRight; //keeps track of which way our Player SHOULD be facing
 
+    //play sound effects
+    public AudioSource lavaRockAudio; //declare and set lava rock audio in inspector
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name == "Lava Rock")
         {
             TakeDamage(1); //call TakeDamage(), reduce health by 1
+            lavaRockAudio.Play(); //play the lava rock audio
         }
     }
 
