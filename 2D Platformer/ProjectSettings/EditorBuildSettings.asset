@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tori's Scenes/Tori's Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/In Class Start Scene.unity
+    guid: 0776bdc818f564fa387a23924c21d322
+  - enabled: 1
+    path: Assets/Scenes/In Class Level 1.unity
+    guid: bf33324e2be01494598001283bd82679
   m_configObjects: {}

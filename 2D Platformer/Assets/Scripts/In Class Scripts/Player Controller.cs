@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public bool flippedLeft; //keeping track of which way our SPRITE is facing
     public bool facingRight; //keeping track of which way our Player SHOULD be facing
 
+    //play sound effects
+    public AudioSource fireAudio; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +82,8 @@ public class PlayerController : MonoBehaviour
 
         if(collision.gameObject.name == "Fire")
         {
-            TakeDamage(5); 
+            TakeDamage(5);
+            fireAudio.Play(); 
         }
 
     }
