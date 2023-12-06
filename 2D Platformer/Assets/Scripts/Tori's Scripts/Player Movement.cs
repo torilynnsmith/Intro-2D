@@ -139,16 +139,19 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Flip() called. facingRight = " + facingRight); //print to console
 
-        if (flippedLeft && facingRight) //if player is flipped Left but facing right...
+        if (!flippedLeft && facingRight) //if player is flipped Left but facing right...
         {
             transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
-            flippedLeft = false; 
+                                          //flippedLeft = false;
+            flippedLeft = true;
+
         }
 
-        if (!flippedLeft && !facingRight) //if player is flipped right but facing left
+        if (flippedLeft && !facingRight) //if player is flipped right but facing left
         {
             transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
-            flippedLeft = true; 
+            //flippedLeft = true;
+            flippedLeft = false;
         }
     }
 
