@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
+    //TORI'S BASE SCRIPT
 {
     //THINGS TO DO NEXT
     //1. Move "Random Direction At Start" code to its own function

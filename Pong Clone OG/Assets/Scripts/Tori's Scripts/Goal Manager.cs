@@ -7,7 +7,7 @@ public class GoalManager : MonoBehaviour
     //GLOBAL VARIABLES
     public bool isPlayer1Goal; //declare and set bool in the inspector to determine which Goal is for Player 1
 
-    public GameManager myManager; //declare and set the Game Manager from the Inspector
+    public GameManager myManager; //declare and set the Game Manager from the Inspector (will pull the script from the object)
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class GoalManager : MonoBehaviour
         //you could also do this as a true collision on the walls, but I want you to see how triggers work!
         //If a collider is a trigger, objects will pass right through it, but a "collision" will still be registered
     {
-        if (collision.gameObject.tag == "Ball") //if the Ball collide with the Goal areas
+        if (collision.gameObject.tag == "Ball") //if the Ball collides with the Goal areas, do something
         {
             if (!isPlayer1Goal) //if the Trigger is on the Player 2 Goal (check your bool!)
                 //! = is not

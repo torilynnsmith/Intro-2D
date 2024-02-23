@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Paddle : MonoBehaviour
+    //TORI'S BASE SCRIPT
 {
     //UNIVERSAL VARIABLES
     public Rigidbody2D rbPaddle; //get RigidBody2D component from object in inspector
