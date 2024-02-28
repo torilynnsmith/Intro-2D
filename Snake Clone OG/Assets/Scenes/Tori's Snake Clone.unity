@@ -1245,13 +1245,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailPrefab: {fileID: 8135687862986933657, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
   myManager: {fileID: 330992087}
+  foodSpawn: {fileID: 330992085}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 330992086}
   - {fileID: 1577207120}
   - {fileID: 2640180840742015809}
-  - {fileID: 330992086}
   - {fileID: 823012740}
   - {fileID: 1882886575}

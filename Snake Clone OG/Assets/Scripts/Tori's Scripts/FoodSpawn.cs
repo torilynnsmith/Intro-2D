@@ -30,7 +30,7 @@ public class FoodSpawn : MonoBehaviour
     }
 
     //Spawn one piece of food w/i the game's borders
-    void Spawn()
+    public void Spawn()
     {
         //set x position b/w Left & Right borders
         int xPos = (int)Random.Range(borderLeft.position.x+5, borderRight.position.x-5);

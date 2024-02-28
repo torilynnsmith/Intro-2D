@@ -16,7 +16,8 @@ public class Snake : MonoBehaviour
     bool ate = false; //set a bool to determine if the snake has eaten something. Will change upon Trigger w/ FoodPrefabs
     public GameObject tailPrefab; //set the TailPrefab in the Inspector to Instantiate it through code. 
 
-    public GameManager myManager; 
+    public GameManager myManager;
+    public FoodSpawn foodSpawn; 
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,14 @@ public class Snake : MonoBehaviour
 
         //Change the Snake's direction by calling ChangeDirection(), detecting key presses all the time
         ChangeDirection(); //It's nice to keep chunks of code like this in their own functions, just like we did with the Pong Player Paddles
+
+        //call function to call food one at a time in the FoodSpawn Script
+        //if(ate)
+        //{
+        //    foodSpawn.Spawn();
+        //    ate = false;
+        //}
+        //NOTE: this happens quicker than the snake will grow due to invoke repeating, so may want to use another variable that we can turn on and off quicker
     }
 
     //Make the Snake move
