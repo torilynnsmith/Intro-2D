@@ -6,23 +6,29 @@ using System.Linq; //add in a new Systems Library to allow us to use LISTS
 public class Snake : MonoBehaviour
 {
     //GLOBAL VARIABLES
+    //Snake Movement
     Vector3 dir = Vector3.right; //decare default movement direction
                                  //Remember the difference b/w Vector2(x,y) & Vector3(x,y,z)
                                  //there is shorthand for Vector2/3 directions.
                                  //In this one, Vector3.right = Vector3(1,0,0), moving it to the RIGHT
+    public bool inPlay; //set to true/false if snake is in Play, set in Inspector
+    public Vector3 snakeStartPos; //Ball starting position, set in Inspector
 
     //Keep Track of Tail Elements we'll be adding
     List<Transform> tail = new List<Transform>(); //declare a list variable
     bool ate = false; //set a bool to determine if the snake has eaten something. Will change upon Trigger w/ FoodPrefabs
     public GameObject tailPrefab; //set the TailPrefab in the Inspector to Instantiate it through code. 
 
+    //Reference other scripts
     public GameManager myManager;
-    public FoodSpawn foodSpawn; 
+    public FoodSpawn foodSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        //OPTION: Randomize the direction of the snake like our Pong Ball 
+        inPlay = true; //set inPlay to True
+
+        //OPTION: Randomize the starting direction of the snake like our Pong Ball 
         //Call MoveSnake() every 300ms(0.3 seconds) to move the snake
         InvokeRepeating("MoveSnake", 0.3f, 0.3f);
         //InvokeRepeating("methodName", time, repeatRate)
@@ -47,6 +53,14 @@ public class Snake : MonoBehaviour
         //    ate = false;
         //}
         //NOTE: this happens quicker than the snake will grow due to invoke repeating, so may want to use another variable that we can turn on and off quicker
+
+        //reset Snake to start Position and reset the Score
+        if (inPlay == false)
+        {
+            transform.position = snakeStartPos; //set Snake position to start position
+            inPlay = true; //set inPlay to true (to stop it from resetting)
+            myManager.foodScore = 0; //reset the foodScore to 0
+        }
     }
 
     //Make the Snake move
@@ -140,11 +154,12 @@ public class Snake : MonoBehaviour
 
             //Change Score
             myManager.FoodEaten(); //call the Food Eaten Funciton to change the score. 
+            foodSpawn.Spawn(); //spawn new food in random location
 
-
-        } //When the Snake collides with the Tail or the Borders
-        else
+        } //When the Snake collides with the Walls/Borders
+        else if (collision.gameObject.tag == "Wall")
         {
+            inPlay = false; //set inPlay to false, trigger position reset
             //NEXT STEPS: reset the snake Head position (just like the ball) and reset the score when the snake head makes contact with the walls or its own tail
         }
     }

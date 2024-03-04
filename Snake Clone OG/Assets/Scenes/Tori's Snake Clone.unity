@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 97375489}
   m_Layer: 0
   m_Name: BorderTop
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 791956650}
   m_Layer: 0
   m_Name: BorderRight
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 1162780830}
   m_Layer: 0
   m_Name: BorderLeft
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 1235863738}
   m_Layer: 0
   m_Name: BorderBottom
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1214,6 +1214,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7782958214881188267, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8135687862986933657, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
       propertyPath: m_Name
       value: Head
@@ -1243,6 +1247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b52ff6b5b6aa4dddad3634f52786090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inPlay: 0
+  snakeStartPos: {x: 0, y: 0, z: 0}
   tailPrefab: {fileID: 8135687862986933657, guid: 0a8bfc54f5b7d4cb390c89f3d0644a2c, type: 3}
   myManager: {fileID: 330992087}
   foodSpawn: {fileID: 330992085}

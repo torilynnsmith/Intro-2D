@@ -11,16 +11,18 @@ public class FoodSpawn : MonoBehaviour
     public Transform borderTop;
     public Transform borderBottom;
     public Transform borderLeft;
-    public Transform borderRight; 
+    public Transform borderRight;
     
     // Start is called before the first frame update
     void Start()
     {
+        Spawn(); 
         //Invoke("Spawn", 4); //Spawn food one time 3 seconds after the Invoke is called
 
         //Spawn food every 4 seconds, 3 seconds after InvokeRepeating is called the first time
-        InvokeRepeating("Spawn", 3, 4);
+        //InvokeRepeating("Spawn", 3, 4);
         //NEXT STEPS: change this to a single Invoke and then only instantiate a new one after the previous one has been eaten
+
     }
 
     // Update is called once per frame
