@@ -16,6 +16,7 @@ public class Snake : MonoBehaviour
 
     //Keep Track of Tail Elements we'll be adding
     List<Transform> tail = new List<Transform>(); //declare a list variable
+                                                  //This list keeps track of the Transform compenents of objects in the list
     bool ate = false; //set a bool to determine if the snake has eaten something. Will change upon Trigger w/ FoodPrefabs
     public GameObject tailPrefab; //set the TailPrefab in the Inspector to Instantiate it through code. 
 
@@ -96,8 +97,8 @@ public class Snake : MonoBehaviour
             ate = false; 
         }
 
-        //Check if the snake has a tail
-        if (tail.Count > 0) //if the Tail amount is greater than 0, then...
+        //Otherwise, check if snake has a tail
+        else if (tail.Count > 0) //if the Tail amount is greater than 0, then...
         {
             //Move last Tail Element to where the Head previously was
             tail.Last().position = gap;
