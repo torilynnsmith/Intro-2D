@@ -5,6 +5,8 @@ using System.Linq; //add in a new Systems Library to allow us to use LISTS
 
 public class Snake : MonoBehaviour
 {
+    //TORI'S VERSION
+
     //GLOBAL VARIABLES
     //Snake Movement
     Vector3 dir = Vector3.right; //decare default movement direction
