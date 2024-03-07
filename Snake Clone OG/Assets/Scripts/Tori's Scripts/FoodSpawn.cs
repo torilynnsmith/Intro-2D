@@ -7,7 +7,7 @@ public class FoodSpawn : MonoBehaviour
     //GLOBAL VARIABLES
     public GameObject foodPrefab; //declare and set foodPrefab variable in the inspector (use the food prefab we made!)
 
-    //Get Border Positions (so we can spawn the food within them)
+    //Get Border Positions (so we can spawn the food within them), set in Inspector
     public Transform borderTop;
     public Transform borderBottom;
     public Transform borderLeft;
@@ -16,7 +16,7 @@ public class FoodSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Spawn(); 
+        Spawn(); //call Spawn()
         //Invoke("Spawn", 4); //Spawn food one time 3 seconds after the Invoke is called
 
         //Spawn food every 4 seconds, 3 seconds after InvokeRepeating is called the first time

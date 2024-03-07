@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         foodScoreText.text = "Score: " + foodScore; //update foodScoreText UI
     }
 
+    //To be run when Food is Eaten....
     public void FoodEaten()
     {
         foodScore++; //add 1 to food score

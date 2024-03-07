@@ -23,8 +23,8 @@ public class Snake : MonoBehaviour
     public GameObject tailPrefab; //set the TailPrefab in the Inspector to Instantiate it through code. 
 
     //Reference other scripts
-    public GameManager myManager;
-    public FoodSpawn foodSpawn;
+    public GameManager myManager; //reference to the GameManager script, set in Inspector
+    public FoodSpawn foodSpawn; //reference to the FooddSpawn script, set in Inspector
 
     // Start is called before the first frame update
     void Start()
@@ -153,10 +153,10 @@ public class Snake : MonoBehaviour
                 //See the MoveSnake() function for making the snake longer
 
             //Remove the Food
-            Destroy(collision.gameObject); //destroy the foodPrefab that the snake Head has touched
+            Destroy(collision.gameObject); //destroy the foodPrefab that the snake Head has collided with
 
             //Change Score
-            myManager.FoodEaten(); //call the Food Eaten Funciton to change the score. 
+            myManager.FoodEaten(); //call the Food Eaten Function in the GameManager script to change the score. 
             foodSpawn.Spawn(); //spawn new food in random location
 
         } //When the Snake collides with the Walls/Borders
