@@ -99,7 +99,8 @@ public class SceneChanger : MonoBehaviour
         //SceneManager.LoadScene("End Scene"); //call a scene specifically by it's name
         //OR
         SceneManager.LoadScene(sceneID); //load a scene based on its Scene ID # in Build Settings.
-            //Set this number in the Inspector
+                                         //Set this number in the Inspector
+                                         //Unity Documentation on LoadScene: https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
     }
 
 }
