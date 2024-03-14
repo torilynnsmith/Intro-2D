@@ -12,7 +12,8 @@ public class SceneChanger : MonoBehaviour
 
     //public KeyCode sceneKey; //set key to change scene in Inspector
     public int sceneNumber; //set Scene Number in Inspector
-        //Start = 1, Main = 2, End = 3
+                            //essentially does the same thing as sceneID in the Build Settings
+                            //Start = 1, Main = 2, End = 3
 
     // Start is called before the first frame update
     void Start()
