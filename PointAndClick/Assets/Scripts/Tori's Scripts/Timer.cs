@@ -1,4 +1,4 @@
-using System.Collections;
+timusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; //add and use the TMPro library
@@ -43,8 +43,8 @@ public class Timer : MonoBehaviour
             else if (timeRemaining <= 0) //if there is 0 timeRemaining (Time has Run Out)
             {
                 Debug.Log("Time has run out!"); //print to console
-                timeRemaining = 0; //lock timeRemaing to 0 so it doesn't go into negative numbers
                 timerIsRunning = false; //set bool to false to stop timer
+                timeRemaining = 0; //lock timeRemaing to 0 so it doesn't go into negative numbers
                 NextScene(); //call NextScene function
 
             }
