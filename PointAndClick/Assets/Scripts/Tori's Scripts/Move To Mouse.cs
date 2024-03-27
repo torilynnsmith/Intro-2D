@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveToMouse : MonoBehaviour
 {
+    //TORI'S OG SCRIPT
+
     //GLOBAL VARIABLES
     public float speed = 5f; //set speed, can change in inspector
     private Vector3 target; //declare target variable, where the moving object will try to move to

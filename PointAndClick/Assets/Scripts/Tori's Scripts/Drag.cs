@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Drag : MonoBehaviour
 {
+    //TORI'S OG SCRIPT
+
     //NOTE: Your draggable sprites/game objects must have COLLIDERS!
     //This script lives on the object you are dragging
 
     //GLOBAL VARIABLES
     private bool isDragging = false; //set true/false variable to check if the object is currently being dragged or not.
-    private Vector3 offset; 
+    private Vector3 offset; //will store the difference b/w the draggable object's center and the clicked point on the camera's view
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,7 @@ public class Drag : MonoBehaviour
                 //Screen To World Point: Transforms a point from "screen space" into "world space". Needs a Vector 3.
                 //Use the Input system (event system) to get the current mousePosition. This will be your Vector3 for ScreenToWorldPoint
 
-                //NOTE: w/o the offset variable, the player would have to click in the exact center of the draggable object to get it to move.
+                //NOTE: w/o the offset variable, the player would have to click in the exact center of the draggable object to get it to move OR IT WOULD JUMP AROUND ON THE Z-axis.
                 //The offset variable account for that error! 
         }
     }
