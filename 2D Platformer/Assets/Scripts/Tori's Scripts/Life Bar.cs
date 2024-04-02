@@ -6,10 +6,10 @@ using UnityEngine.UI; //add the unity UI library
 public class LifeBar : MonoBehaviour
 {
     //UI INSTRUCTIONS
-    //1. Add a Canvas. Add an Image to the canvas.
-    //2. Add the bar sprite to the Image. Click "set native size" in the inspector to prevent any weird stretching. Rename the Image Object as "Border".
+    //1. Add a Canvas.Add an Image to the canvas.
+    //2. Add the bar sprite to the Image.Click "set native size" in the inspector to prevent any weird stretching.Rename the Image Object as "Border".
     //3. Create an empty game object on the cavas and rename it "Health Bar". Make it the same size as your "Border" image using the Rect tool.
-    //4. Parent the Border Image to the Health Bar. This will act as a "Parent Object" to keep your other sprites organized and grouped together. 
+    //4.Parent the Border Image to the Health Bar. This will act as a "Parent Object" to keep your other sprites organized and grouped together. 
     //5. Add an Image as a child to the Health Bar. Name it "Fill". Order it ABOVE your Border.
     //6. Open "Anchor Presets" in the Fill's Rect Transform. Hold down alt/opt and select the bottom right. This will set the scale and anchor points to that of our health bar. 
     //7. We can now scale just the Fill to create demo of our health values going up or down. Change the color to whatever you please. 

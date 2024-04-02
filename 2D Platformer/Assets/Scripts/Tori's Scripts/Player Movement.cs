@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float playerSpeed = 0.05f; //declare and set playerSpeed
     public float jumpForce = 300; //declare and set jumpForce
-    public bool isJumping = false;
+    public bool isJumping = false; //declare and set a bool for if we're jumping or not to false (b/c we're not jumping when the game starts)
 
     //Player Health
     public int maxHealth = 20; //set and declare the maxHealth
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //I've decided to put these movements in separate functions for organizational reasons! 
         MovePlayer(); //call MovePlayer() function
-        Jump();
+        Jump(); //call Jump() function
 
         //Take damage test
         //if (Input.GetKeyDown(KeyCode.Y)) //when Y is pressed, first frame only
@@ -64,14 +64,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) //If A Key is pressed
         {
             //Debug.Log("A pressed."); //print to console
-            newPos.x -= playerSpeed; //affect x coordinate left
+            newPos.x -= playerSpeed; //affect x coordinate, move left
             facingRight = false; //facing/moving Left
             Flip(false); //call Flip(), feed it a bool
         }
         else if (Input.GetKey(KeyCode.D)) //Move Right w/ D Key
         {
             //Debug.Log("D pressed."); //print to console
-            newPos.x += playerSpeed; //affect x coordinate right
+            newPos.x += playerSpeed; //affect x coordinate, move right
             facingRight = true; //facing/moving Right
             Flip(true); //call Flip(), feed it a bool
         }
@@ -86,24 +86,26 @@ public class PlayerMovement : MonoBehaviour
 
         //NOTE: As written, this allows infinite double jumping! How can you limit that?
 
-        if (!isJumping && Input.GetKeyDown(KeyCode.Space)) //when the Spacebar is pressed (first frame only)
+        if (!isJumping && Input.GetKeyDown(KeyCode.Space)) //when the Spacebar is pressed and isJumping is false (first frame only)
+                                                           //this disallows infinite jumping. you could alter the isJumping bool to and int to allow for differend amounts of jumping, i.e. Double Jumping!
         {
-            playerBody.AddForce(new Vector3(playerBody.velocity.x, jumpForce, 0)); //apply force in decided direction
+            playerBody.AddForce(new Vector3(playerBody.velocity.x, jumpForce, 0)); //apply force in decided direction (y axis)
             //Similar to launching our Pong Ball! We're just declaring the new Vector 3 in the same line.
             //This Vector 3 keeps the same velocity.x (to keep moving in whatever x direction), but changes the y to jumpForce, and doesn't change the z at all. 
-            isJumping = true;
+            isJumping = true; //set isJumping to true
             //Debug.Log("isJumping = " + isJumping); //print to console
             //reset is jumping on collision with a surface??
         }
     }
 
+    //Chevk collisions
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //when colliding with a surface (ground, safe obstacles, etc.)
         if (collision.gameObject.tag == "Surface")
         {
             //Debug.Log("collided w/ surface"); //print to console
-            isJumping = false;
+            isJumping = false; //set isJumping to false
             //Debug.Log("isJumping = " + isJumping); //print to console
 
         }
