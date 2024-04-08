@@ -7,11 +7,11 @@ public class Fireball : MonoBehaviour
     //GLOBAL VARIABLES
     //physics stuff
     public Rigidbody2D projectileRb; //declare and set the Rigidbody for the Projectile in the inspector
-    public float speed; //declare how fast the projectile will go (alter in inspector)
+    public float speed = 6; //declare how fast the projectile will go (alter in inspector)
         //currenlty set to 6
 
     //projectile countdown timer
-    public float projectileLife; //set how long the projectile will last
+    public float projectileLife = 2; //set how long the projectile will last
         //currenlty set to 2
     public float projectileCount; //counts down time until the projectile destorys itself. (
                                   //currenlty set to 0
