@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     //"flip" direction (for projectiles)
     public bool flippedLeft; //keeps track of which way our sprite IS facing
-    public bool facingRight; //keeps track of which way our Player SHOULD be facing
+    public bool facingLeft; //keeps track of which way our Player SHOULD be facing
 
     //play sound effects
     public AudioSource lavaRockAudio; //declare and set lava rock audio in inspector
@@ -65,14 +65,14 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log("A pressed."); //print to console
             newPos.x -= playerSpeed; //affect x coordinate, move left
-            facingRight = false; //facing/moving Left
+            facingLeft = true; //facing/moving Left
             Flip(false); //call Flip(), feed it a bool
         }
         else if (Input.GetKey(KeyCode.D)) //Move Right w/ D Key
         {
             //Debug.Log("D pressed."); //print to console
             newPos.x += playerSpeed; //affect x coordinate, move right
-            facingRight = true; //facing/moving Right
+            facingLeft = false; //facing/moving Right
             Flip(true); //call Flip(), feed it a bool
         }
 
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Flip() called. facingRight = " + facingRight); //print to console
 
-        if (!flippedLeft && facingRight) //if player is flipped Left but facing right...
+        if (!flippedLeft && facingLeft) //if player is flipped Left but facing right...
         {
             transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
                                           //flippedLeft = false;
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (flippedLeft && !facingRight) //if player is flipped right but facing left
+        if (flippedLeft && !facingLeft) //if player is flipped right but facing left
         {
             transform.Rotate(0, -180, 0); //flip the whole sprite and it's childed Launch point
             //flippedLeft = true;

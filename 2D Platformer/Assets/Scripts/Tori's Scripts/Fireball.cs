@@ -17,7 +17,7 @@ public class Fireball : MonoBehaviour
                                   //currenlty set to 0
     //flip launch direction
     public PlayerMovement playerMovement; //reference and set the Player Movement script in the inspector
-    public bool facingRight; //declare facingRight bool (you'll pull this from the player movement script in a bit)
+    public bool facingLeft; //declare facingRight bool (you'll pull this from the player movement script in a bit)
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +28,8 @@ public class Fireball : MonoBehaviour
         //find the Player Movement script through code
         //we get the reference to the script this way b/c the projectile is a prefab and we can't set it in in the inspector anymore
 
-        facingRight = playerMovement.facingRight; //get the facingRight value from the Player Movement script and equate it to the facingRight in THIS SCRIPT
-        if(!facingRight) //if the player is facing Left...
+        facingLeft = playerMovement.facingLeft; //get the facingRight value from the Player Movement script and equate it to the facingRight in THIS SCRIPT
+        if(!facingLeft) //if the player is facing Left...
         {
             transform.rotation = Quaternion.Euler(0, 180, 0); //rotate the projectile 180 degrees to the left
             //Quaternion.Euler returns rotation values and applies them
@@ -53,16 +53,16 @@ public class Fireball : MonoBehaviour
         //IN SHORT: Moving w/ Rigidbody stuff -> FixedUpdate()
         //VS: Moving w/ transform -> Update()
     {
-        if(facingRight)//if facingRight = true...
+        if(facingLeft)//if facingLeft = true...
         {
-            //shoot projectile right
-            projectileRb.velocity = new Vector3(speed, projectileRb.velocity.y, 0); 
+            //shoot projectile Left (notice the -speed)
+            projectileRb.velocity = new Vector3(-speed, projectileRb.velocity.y, 0); 
             //projectile will move along x,y,z Vector 3
         }
-        else //otherwise...
+        else //otherwise...(facing Right)
         {
-            //shoot projectile left (NOTICE THE -speed!!!) 
-            projectileRb.velocity = new Vector3(-speed, projectileRb.velocity.y, 0);
+            //shoot projectile right (NOTICE THE speed!!!) 
+            projectileRb.velocity = new Vector3(speed, projectileRb.velocity.y, 0);
 
         }
     }

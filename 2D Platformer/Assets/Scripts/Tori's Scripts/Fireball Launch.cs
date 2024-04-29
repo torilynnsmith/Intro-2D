@@ -10,7 +10,7 @@ public class FireballLaunch : MonoBehaviour
     public GameObject projectilePrefab; //declare and set the projectilePrefab GameObject in the Inspector
     public Transform launchPoint; //the position from which a projectile will launch
 
-    public float shootTime = 0.5; //cooldown time amount b/w projectile firing, set in inspector
+    public float shootTime = 0.5f; //cooldown time amount b/w projectile firing, set in inspector
         //currently set to 0.5
     public float shootCounter; //the cooldown timer itself, set in inspector
 
